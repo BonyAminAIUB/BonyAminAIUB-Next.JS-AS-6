@@ -128,6 +128,8 @@ The Navbar, Hero section, workout cards, workout details, and My Plan page autom
 🔗 **Repository:**
 https://github.com/BonyAminAIUB/BonyAminAIUB-Next.JS-AS-6
 
+🔗 **Live link:**
+https://as-6-fit-check.netlify.app/my-plan
 ---
 
 ## 👨‍💻 Developer
