@@ -121,7 +121,7 @@ const MyPlanPage = () => {
 
     if (loading) {
         return (
-            <div className='min-h-[500px] flex justify-center items-center'>
+            <div className='min-h-125 flex justify-center items-center'>
                 <span className='loading loading-spinner loading-lg text-[#C2F800]'></span>
             </div>
         );
@@ -156,8 +156,14 @@ const MyPlanPage = () => {
 
                 <div className='flex items-center justify-between mb-5'>
                     <div className='flex border border-[#242830] bg-[#13161C] rounded-lg overflow-hidden'>
-                        <button onClick={() => setActiveTab('plan')} className={`px-5 py-2.5 text-xs font-semibold ${activeTab === 'plan' ? 'bg-[#20242C] text-white' : 'text-[#777D87]'}`}>
-                            Today's Plan
+                        <button
+                            onClick={() => setActiveTab('plan')}
+                            className={`px-5 py-2.5 text-xs font-semibold ${activeTab === 'plan'
+                                    ? 'bg-[#20242C] text-white'
+                                    : 'text-[#777D87]'
+                                }`}
+                        >
+                            Today&apos;s Plan
                         </button>
 
                         <button onClick={() => setActiveTab('saved')} className={`px-5 py-2.5 text-xs font-semibold ${activeTab === 'saved' ? 'bg-[#20242C] text-white' : 'text-[#777D87]'}`}>
@@ -176,7 +182,7 @@ const MyPlanPage = () => {
                 </div>
 
                 {currentWorkouts.length === 0 ? (
-                    <div className='border border-[#242830] bg-[#13161C] rounded-xl min-h-[300px] flex flex-col justify-center items-center text-center'>
+                    <div className='border border-[#242830] bg-[#13161C] rounded-xl min-h-75 flex flex-col justify-center items-center text-center'>
                         <h2 className='text-xl font-bold'>NOTHING HERE YET</h2>
                         <p className='text-[#777D87] text-sm mt-2'>Browse the library and add a lift to get today moving.</p>
                         <Link href='/workouts' className='btn btn-sm bg-[#C2F800] text-black border-0 mt-5 rounded-lg text-sm'>
@@ -187,7 +193,7 @@ const MyPlanPage = () => {
                     <div className='space-y-4'>
                         {currentWorkouts.map((workout) => (
                             <div key={workout.id} className='border border-[#242830] bg-[#13161C] rounded-xl p-4 flex items-center gap-4'>
-                                <Image src={workout.image} alt={workout.name} width={125} height={75} className='w-[125px] h-[75px] object-cover rounded-lg shrink-0' />
+                                <Image src={workout.image} alt={workout.name} width={125} height={75} className='w-31.25 h-18.75 object-cover rounded-lg shrink-0' />
 
                                 <div className='min-w-0 flex-1'>
                                     <h2 className='text-sm md:text-base font-black uppercase truncate'>{workout.name}</h2>

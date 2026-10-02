@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import logo from '../../public/logo.png';
 
@@ -12,7 +12,7 @@ const Navbar = () => {
     const [planCount, setPlanCount] = useState(0);
     const [savedCount, setSavedCount] = useState(0);
 
-    const updateCounts = () => {
+    const updateCounts = useCallback(() => {
         const plan = JSON.parse(
             localStorage.getItem('fitlogPlan') || '[]'
         );
@@ -23,10 +23,12 @@ const Navbar = () => {
 
         setPlanCount(plan.length);
         setSavedCount(saved.length);
-    };
+    }, []);
 
     useEffect(() => {
-        updateCounts();
+        const timer = setTimeout(() => {
+            updateCounts();
+        }, 0);
 
         window.addEventListener(
             'fitlogUpdate',
@@ -34,12 +36,14 @@ const Navbar = () => {
         );
 
         return () => {
+            clearTimeout(timer);
+
             window.removeEventListener(
                 'fitlogUpdate',
                 updateCounts
             );
         };
-    }, []);
+    }, [updateCounts]);
 
     const links = (
         <>
@@ -115,7 +119,7 @@ const Navbar = () => {
 
                     <Link
                         href='/'
-                        className='font-bold text-2xl mx-[5px]'
+                        className='font-bold text-2xl mx-1.25'
                     >
                         FITLOG
                     </Link>
@@ -158,3 +162,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
